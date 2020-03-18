@@ -1,7 +1,7 @@
-var numCircles = 6;
-var	colors = [];
+var numHearts = 6;
+var hearts = [];
 var pickedColor;
-var circles = document.querySelectorAll(".circle");
+var hearts = document.querySelectorAll(".heart");
 var colorDisplay = document.getElementById("colorDisplay");
 var infoDisplay = document.querySelector("#info");
 var h1 = document.querySelector("h1");
@@ -13,7 +13,7 @@ init();
   function init(){
   	//status buttons event listeners
   	setupStatusButtons();
-  	setupCircles();
+  	setupHearts();
   	reset();
   }
 
@@ -26,24 +26,24 @@ init();
 		statusButtons[3].classList.remove("selected");
 		this.classList.add("selected");
 		if(this.textContent === "Easy"){
-        numCircles = 3;
+        numHearts = 3;
       } else if (this.textContent === "Medium") {
-        numCircles = 6;
+        numHearts = 6;
       } else if (this.textContent === "Hard") {
-        numCircles = 9;
+        numHearts = 9;
       }  else {
-      	numCircles = 12;
+      	numHearts = 12;
       }
 		reset();
 	});
   }
 }
 
-function setupCircles(){
-	  for(var i = 0; i < circles.length; i++){
-	//add click listeners to circles
-	circles[i].addEventListener("click", function(){
-		//grab color of clicked circles
+function setupHearts(){
+	  for(var i = 0; i < hearts.length; i++){
+	//add click listeners to hearts
+	hearts[i].addEventListener("click", function(){
+		//grab color of clicked hearts
 		var clickedColor = this.style.backgroundColor;
 		//compare color to pickedColor
 		if(clickedColor === pickedColor){
@@ -61,20 +61,20 @@ function setupCircles(){
 
 function reset(){
 	//generate all new colors
-	colors = generateRandomColors(numCircles);
+	colors = generateRandomColors(numHearts);
 	//pick a new random color from array
 	pickedColor = pickColor();
 	//change colorDisplay to match picked color
 	colorDisplay.textContent = pickedColor;
 	resetButton.textContent = "New Colors"
 	infoDisplay.textContent = "";
-	//change colors of circles
-	for(var i = 0; i < circles.length; i++){
+	//change colors of hearts
+	for(var i = 0; i < hearts.length; i++){
 		if(colors[i]){
-		circles[i].style.display = "block";
-		circles[i].style.backgroundColor = colors[i];
+		hearts[i].style.display = "block";
+		hearts[i].style.backgroundColor = colors[i];
 	} else {
-		circles[i].style.display = "none";
+		hearts[i].style.display = "none";
 	}
 }
 	h1.style.backgroundColor = "#b20505";
@@ -85,10 +85,10 @@ resetButton.addEventListener("click", function(){
 })
 
 function changeColors(color){
-	//loop through all circles
-	for(var i = 0; i < circles.length; i++){
+	//loop through all hearts
+	for(var i = 0; i < hearts.length; i++){
 	//change each color to match given color
-	circles[i].style.backgroundColor = color;
+	hearts[i].style.backgroundColor = color;
 	}
 }
 
